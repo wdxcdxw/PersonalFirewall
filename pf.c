@@ -97,7 +97,7 @@ void print_rule()
 	char ch;
 	int i=0,j=0;
 	
-	printf("in/out\tsrc_ip\tsrc_netmask\tsrc_port\tdest_ip\tdest_netmask\tdest_port\tprotocol\taction\n");
+	printf("in/out           src_ip      src_netmask  src_port          dest_ip     dest_netmask  dest_port  protocol   action\n");
 	
 	pf=fopen("/proc/personalFirewall","r");
 	if(pf==NULL)
@@ -120,7 +120,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			printf("  %s  ", token);
+			printf("%6s", token);
 			if (ch==EOF) break;
 	 
 			//src_ip
@@ -130,14 +130,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			if (strcmp(token, "-")==0)
-			{
-				printf("      %s     ", token);
-			}
-			else
-			{
-				printf(" %s ", token);
-			}
+			printf("%17s", token);
 			if (ch==EOF) break;
 	 
 			//src_netmask
@@ -147,14 +140,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			if (strcmp(token, "-")==0)
-			{
-				printf("      %s     ", token);
-			}
-			else
-			{
-				printf(" %s ", token);
-			}
+			printf("%17s", token);
 			if (ch==EOF) break;
 	 
 			//src_port        
@@ -164,7 +150,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			printf("%s     ", token);
+			printf("%10s", token);
 			if (ch==EOF) break;
 	 
 			//dest_ip
@@ -174,14 +160,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			if (strcmp(token, "-")==0)
-			{
-				printf("      %s     ", token);
-			}
-			else
-			{
-				printf(" %s ", token);
-			}
+			printf("%17s", token);
 			if (ch==EOF) break;
 			
 			//dest_netmask
@@ -191,14 +170,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			if (strcmp(token, "-")==0)
-			{
-				printf("      %s     ", token);
-			}
-			else
-			{
-				printf(" %s ", token);
-			}
+			printf("%17s", token);
 			if (ch==EOF) break;
 
 			//dest_port
@@ -208,7 +180,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			printf("%s     ", token);
+			printf("%11s", token);
 			if (ch==EOF) break;
 	 
 			//protocol
@@ -218,7 +190,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			printf("    %s    ", token);
+			printf("%10s", token);
 			if (ch==EOF) break;
 
 			//action
@@ -228,7 +200,7 @@ void print_rule()
 				token[i++] = ch;
 			}
 			token[i] = '\0';
-			printf(" %s\n", token);
+			printf("%9s\n", token);
 			if (ch==EOF) break;
 		}
 	}
